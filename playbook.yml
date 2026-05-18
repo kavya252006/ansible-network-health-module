@@ -1,0 +1,21 @@
+
+
+---
+- name: Network Health Check
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    - name: check Google HTTPS connectivity
+      network_health:
+        host: google.com
+        port: 443
+
+      register: network_result
+
+
+    - name: Print module output
+      debug:
+        var: network_result
+
